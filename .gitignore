@@ -1,0 +1,15 @@
+data/
+__pycache__/
+*.pyc
+test.json
+app/db.sqlite3
+app/app.log
+app/alembic/*.docx
+app/alembic/*.pdf
+app/alembic/*.json
+app/alembic/*.csv
+app/alembic/*.html
+cv.json
+research
+test.py
+settings.toml
