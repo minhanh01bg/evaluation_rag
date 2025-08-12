@@ -11,3 +11,6 @@ db = client[configs.MONGO_DB]  # your name of database
 
 # evaluation
 evaluation_collection = db['evaluation']
+
+
+documents_collection = db["documents"]

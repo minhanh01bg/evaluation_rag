@@ -32,4 +32,7 @@ class Config:
     # site
     SITE_KEY = toml_settings['site']['SITE_KEY']
 
+    HF_TOKEN = toml_settings['hf']['HF_TOKEN']
+
+
 configs = Config()
