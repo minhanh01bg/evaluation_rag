@@ -12,7 +12,10 @@ async def call_chat_once(payload) -> str:
     async with httpx.AsyncClient(timeout=None) as client:
         resp = await client.post(API_URL, json=payload, headers=headers)
         resp.raise_for_status()  # Báo lỗi nếu status != 2xx
-        return resp.json()
+        resp = resp.json()
+        messages = resp['messages']
+        answer = messages[-1]['content']
+        return messages[-2].get("artifact"), answer
     
 
 async def call_chat_n_times(n: int, payload) -> list[str]:
@@ -22,13 +25,13 @@ async def call_chat_n_times(n: int, payload) -> list[str]:
         results.append(result)
     return results
 
-payload = {
-    "question": "Thời tiết hôm nay thế nào?",
-    "session_id": "user_test",
-    "chat_history": [
-    ]
-}
+# payload = {
+#     "question": "what is hugging face?",
+#     "session_id": "user_test",
+#     "chat_history": [
+#     ]
+# }
 
-# Gọi 1 lần để test
-test = asyncio.run(call_chat_once(payload))
-print(test)
+# # Gọi 1 lần để test
+# doc, answer = asyncio.run(call_chat_once(payload))
+

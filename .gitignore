@@ -9,8 +9,4 @@ app/alembic/*.pdf
 app/alembic/*.json
 app/alembic/*.csv
 app/alembic/*.html
-cv.json
-research
-test.py
 settings.toml
-get_data_evaluate.ipynb
