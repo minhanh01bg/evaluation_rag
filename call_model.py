@@ -13,9 +13,10 @@ async def call_chat_once(payload) -> str:
         resp = await client.post(API_URL, json=payload, headers=headers)
         resp.raise_for_status()  # Báo lỗi nếu status != 2xx
         resp = resp.json()
+        print(resp)
         messages = resp['messages']
-        answer = messages[-1]['content']
-        return messages[-2].get("artifact"), answer
+        answer = messages[-1]['kwargs']['content']
+        return messages[-2]['kwargs'].get("artifact"), answer
     
 
 async def call_chat_n_times(n: int, payload) -> list[str]:
@@ -34,4 +35,4 @@ async def call_chat_n_times(n: int, payload) -> list[str]:
 
 # # Gọi 1 lần để test
 # doc, answer = asyncio.run(call_chat_once(payload))
-
+# print(len(doc))
