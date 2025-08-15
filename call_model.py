@@ -13,8 +13,8 @@ async def call_chat_once(payload) -> str:
         resp = await client.post(API_URL, json=payload, headers=headers)
         resp.raise_for_status()  # Báo lỗi nếu status != 2xx
         resp = resp.json()
-        print(resp)
         messages = resp['messages']
+        print(messages)
         answer = messages[-1]['kwargs']['content']
         return messages[-2]['kwargs'].get("artifact"), answer
     
